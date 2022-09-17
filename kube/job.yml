@@ -1,0 +1,16 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: dummy-job
+spec:
+  parallelism: 1
+  completions: 1
+  template:
+    spec:
+      restartPolicy: Never
+      containers:
+      - name: prjctr
+        image: dmtlevin/prjctr:latest
+        ports:
+          - containerPort: 8000
+            name: http-web-svc
